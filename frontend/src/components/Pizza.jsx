@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { formateaNumero } from '../utils/utiles.js'
 
 const Pizza = () => {
-  const [pizza, setPizza] = useState(null)
+  const [pizza, setPizza] = useState({})
 
   const getPizza = async (idpizza) => {
     const res = await fetch(`http://localhost:5000/api/pizzas/${idpizza}`)
@@ -19,25 +19,30 @@ const Pizza = () => {
   }, [])
 
   return (
-    <div className='card shadow-lg border-1 border-muted' style={{ width: '22rem', borderRadius: '10px' }}>
-      <img src={pizza?.img} className='card-img-top' alt={pizza?.name} style={{ borderRadius: '10px 10px 0 0', height: '200px', objectFit: 'cover' }} />
+    <div className='container p-3'>
+      <div className='d-flex flex-wrap flex-md-nowrap w-100 border border-1 border-secondary overflow-hidden'>
+        <div className='m-0 p-0 w-100 w-md-50'>
+          <img src={pizza.img} alt={pizza.name} className='w-100 h-100 object-fit-cover' />
 
-      <div className='card-body text-center m-0 p-0' style={{ width: '100%' }}>
-        <h5 className='card-title fw-bold m-3 text-start'>{`Pizza ${pizza?.name}`}</h5>
-        <hr className='w-100 mx-auto' />
+        </div>
 
-        <p className='text-start text-muted m-3 fw-semibold'>Ingredientes:</p>
+        <div className='m-0 p-3 w-100 w-md-50 align-items-center'>
+          <h4 className='card-title fw-bold text-start'>{`Pizza ${pizza.name}`}</h4>
+          <hr className='w-100 mx-auto' />
 
-        <ul className='text-start text-muted m-3 fw-semibold'>
-          {pizza?.ingredients.map((ingrediente) => <li key={ingrediente}> {ingrediente} </li>)}
-        </ul>
+          <p className='text-start text-muted m-3 fw-semibold'>{pizza.desc}</p>
+          <p className='text-start text-muted m-3 fw-semibold'>Ingredientes:</p>
 
-        <hr className='w-100 mx-auto' />
-        <h5 className='fw-bold text-dark'>Precio: ${formateaNumero(pizza?.price)}</h5>
+          <ul className='text-start text-muted m-3 fw-semibold'>
+            {pizza.ingredients?.map((ingrediente) => <li key={ingrediente}> 🍕 {ingrediente} </li>)}
+          </ul>
 
-        <div className='d-flex justify-content-between mt-3 m-3'>
-          <button className='btn btn-outline-dark btn-sm'>Ver Más 👀</button>
-          <button className='btn btn-dark btn-sm'>Añadir 🛒</button>
+          <hr className='w-100 mx-auto' />
+
+          <div className='d-flex justify-content-between align-items-center m-0 p-0'>
+            <h5 className='fw-bold text-dark'>Precio: ${formateaNumero(pizza.price)}</h5>
+            <button className='btn btn-dark btn-sm'>Añadir 🛒</button>
+          </div>
         </div>
       </div>
     </div>

@@ -18,7 +18,6 @@ const App = () => {
       <Register />
       <Login />
       <Cart />
-
       */
       }
 
