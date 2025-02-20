@@ -23,7 +23,6 @@ const Pizza = () => {
       <div className='d-flex flex-wrap flex-md-nowrap w-100 border border-1 border-secondary overflow-hidden'>
         <div className='m-0 p-0 w-100 w-md-50'>
           <img src={pizza.img} alt={pizza.name} className='w-100 h-100 object-fit-cover' />
-
         </div>
 
         <div className='m-0 p-3 w-100 w-md-50 align-items-center'>

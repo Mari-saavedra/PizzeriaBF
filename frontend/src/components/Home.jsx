@@ -10,7 +10,7 @@ const Home = () => {
   const getPizzas = async () => {
     const res = await fetch('http://localhost:5000/api/pizzas')
     const data = await res.json()
-    console.log('mostramos data', data)
+    // console.log('mostramos data', data)
 
     return setPizzas(data)
   }
